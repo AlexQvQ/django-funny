@@ -1,0 +1,102 @@
+{% extends 'main/template.html '%}
+
+{% block title %}
+Ржака
+{% endblock %}
+
+{% block content %}
+<style>
+    .absurd-card {
+        transition: transform 0.3s;
+    }
+
+    .absurd-card:hover {
+        transform: translateY(-5px) rotate(1deg);
+    }
+
+    .laugh-btn {
+        transition: all 0.2s;
+    }
+</style>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1 class="display-4">🤡 Коллекция бестолковых анекдотов 🤡</h1>
+        </div>
+    </div>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% if jokes %}
+        {% for el in jokes%}
+        <div class="col">
+            <div class="card h-100 border-warning absurd-card">
+                <div class="card-header bg-warning bg-opacity-10">
+                    {{ el.title }}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ el.joke }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <form method="post" action="{% url 'vote_joke' el.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger laugh-btn">
+                            Смеялись: <span class="badge bg-danger">{{ el.votes }}</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>Никто не пошутил</p>
+        {% endif %}
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-6 mx-auto">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    Добавить бестолковый анекдот
+                </div>
+                <div class="card-body">
+                    <span>
+                        {{ context.error }}
+                    </span>
+                    <form method="post" id="joke-form">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="joke-text" class="form-label">Ваш "анекдот":</label>
+                            {{ context.form.title }}
+                            {{ context.form.joke }}
+                        </div>
+                        <button type="submit" class="btn btn-danger">Отправить в никуда</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">🏆 "Лучшие" анекдоты</h3>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Почему программисты такие худые?
+                    <span class="badge bg-primary rounded-pill">3 "смеха"</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Как называется боязнь программировать?
+                    <span class="badge bg-primary rounded-pill">1 "смех"</span>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+</div>
+{% endblock %}

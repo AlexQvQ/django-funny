@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py,cover
+*.swp
+
+# Virtual Environment
+venv/
+.venv/
+
+# Database
+*.sqlite3
+/db.sqlite3
+
+# Static files (если собираются collectstatic)
+/staticfiles/
+/media/

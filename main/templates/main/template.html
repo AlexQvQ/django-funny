@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand nav-brand-custom" href="{% url 'main' %}">БЕСТОЛКОВЫЙ САЙТ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'jokes' %}">Ничего</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">© 2023 Бестолковый сайт. Все права никому не нужны.</p>
+            <p class="small">Если вам понравилось, значит, у вас странное чувство юмора.</p>
+            <div class="mt-3">
+                <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i> Не ВК</a>
+                <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i> Не Телеграм</a>
+                <a href="#" class="text-white"><i class="bi bi-instagram"></i> Фейковые фото</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

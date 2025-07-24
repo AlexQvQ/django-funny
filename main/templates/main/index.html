@@ -1,0 +1,152 @@
+{% extends 'main/template.html '%}
+{% load static %}
+
+{% block title %}
+Безтолковый сайт
+{% endblock %}
+
+{% block content %}
+<style>
+    .image-container {
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f8f9fa;
+    }
+
+    .card-img-fixed {
+        max-height: 200px;
+        object-fit: contain;
+    }
+</style>
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="p-5 text-center bg-info bg-gradient rounded-3">
+                <h1 class="display-4">Добро пожаловать на самый бестолковый сайт!</h1>
+                <p class="lead">Здесь нет ничего полезного, и это прекрасно</p>
+                <button class="btn btn-warning btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#uselessModal">
+                    Бесполезная кнопка
+                </button>
+                <button class="btn btn-warning btn-lg mt-3">
+                    <a class="nav-link" href="{% url 'jokes' %}">Ржака</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+        <div class="col d-flex">
+            <div class="card w-100">
+                <div class="d-flex justify-content-center align-items-center bg-light" style="height: 200px;">
+                    <img src="{% static 'img/bhDw8DVQXFk.jpg' %}" class="img-fluid mh-100 mw-100" alt="Кот-невидимка"
+                        style="max-height: 200px; object-fit: contain;">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Кот-философ</h5>
+                    <p class="card-text flex-grow-1">Если вам плохо - крепко обнимите кота. Вот и всё. Теперь плохо не
+                        только вам, но и коту.</p>
+                    <div class="card-footer bg-transparent border-top-0 px-0 pb-0">
+                        <small class="text-muted">Обновлено никогда</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col d-flex">
+            <div class="card w-100">
+                <div class="d-flex justify-content-center align-items-center bg-light" style="height: 200px;">
+                    <img src="{% static 'img/maxresdefault (1).jpg' %}" class="img-fluid mh-100 mw-100"
+                        alt="Собака-невидимка" style="max-height: 200px; object-fit: contain;">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Собака-теоретик</h5>
+                    <p class="card-text flex-grow-1">У моей девушки сдохла собачка, и, чтобы взбодрить ее, я нашел и
+                        принес ей точно такую же. Она расплакалась и спросила меня: «Зачем мне две дохлые собачки?»</p>
+                    <div class="card-footer bg-transparent border-top-0 px-0 pb-0">
+                        <small class="text-muted">Обновлено вчера (но это не точно)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col d-flex">
+            <div class="card w-100">
+                <div class="d-flex justify-content-center align-items-center bg-light" style="height: 200px;">
+                    <img src="{% static 'img/63a09dfdf30aa1a1045498ab3430c1e4.jpg' %}" class="img-fluid mh-100 mw-100"
+                        alt="Медведь-невидимка" style="max-height: 200px; object-fit: contain;">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Медведь-программист</h5>
+                    <p class="card-text flex-grow-1">Мало кто знает, но "Ау" в переводе на медвежий означает "Кушать
+                        подано".</p>
+                    <div class="card-footer bg-transparent border-top-0 px-0 pb-0">
+                        <small class="text-muted">Обновлено когда-то</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-8 mx-auto">
+            <div class="accordion" id="absurdAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne">
+                            Зачем вы это читаете?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#absurdAccordion">
+                        <div class="accordion-body">
+                            <strong>Хороший вопрос.</strong> Наверное, у вас слишком много свободного времени.
+                            Или вы решили посмотреть работы какого-то странного разработчика. В любом случае, поздравляем - вы достигли дна
+                            интернета.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo">
+                            Почему этот сайт существует?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#absurdAccordion">
+                        <div class="accordion-body">
+                            <strong>Мы сами не знаем.</strong> Вероятно, кто-то забыл выключить компьютер,
+                            и сайт появился сам собой. Как плесень в холодильнике или носки в стиральной машине.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="uselessModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Поздравляем!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы нажали бесполезную кнопку и получили бесполезное сообщение!</p>
+                <img src="{% static 'img/original_98ef239001779bf1aeb2f3a661e6c318.jpg' %}" class="img-fluid mb-3" alt="Кот-поздравлятель">
+                <p>Ваше достижение будет проигнорировано.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.absurd-card').forEach(card => {
+        card.addEventListener('click', () => {
+            alert('Вы кликнули на абсолютно бесполезный элемент!');
+        });
+    });
+</script>
+{% endblock %}
